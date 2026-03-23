@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BORG’ELEC</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    color: #111;
+}
+
+/* HERO AVEC IMAGE */
+.hero {
+    height: 100vh;
+    background: url('photo2.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* FILTRE NOIR PAR DESSUS */
+.hero::before {
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;bottom:0;
+    background: rgba(0,0,0,0.6);
+}
+
+.hero * {
+    position: relative;
+    color: white;
+}
+
+/* LOGO */
+.logo {
+    width: 120px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* TITRE */
+h1 {
+    font-size: 42px;
+    color: #10b981;
+}
+.subtitle {
+    color: #ddd;
+}
+
+/* BOUTONS */
+.btn {
+    background: linear-gradient(45deg,#10b981,#059669);
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    display: inline-block;
+    transition: 0.3s;
+}
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* SECTION */
+section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+/* SERVICES */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.card {
+    flex: 1;
+    min-width: 220px;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-8px);
+}
+
+/* GALERIE SCROLL */
+.gallery {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px;
+}
+.gallery img {
+    height: 200px;
+    border-radius: 10px;
+}
+
+/* CONTACT */
+.contact {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+/* ANIMATION */
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* BOUTON FIXE */
+.call {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #10b981;
+    padding: 20px;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.7); }
+    70% { box-shadow: 0 0 0 20px rgba(16,185,129,0); }
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+
+<img src="photo1.jpg" class="logo">
+
+<h1>⚡ BORG’ELEC</h1>
+<p class="subtitle">Intervention rapide • Devis gratuit</p>
+
+<a class="btn" href="tel:0175361919">📞 Appeler</a>
+<a class="btn" href="mailto:borgelec@gmail.com?subject=Demande%20de%20devis">📩 Devis gratuit</a>
+
+</div>
+
+<!-- SERVICES -->
+<section class="hidden">
+<h2>Nos services</h2>
+
+<div class="cards">
+<div class="card">⚡ Installation électrique</div>
+<div class="card">🔧 Dépannage</div>
+<div class="card">✅ Mise aux normes</div>
+<div class="card">🏠 Rénovation</div>
+</div>
+
+</section>
+
+<!-- PHOTOS -->
+<section class="hidden">
+<h2>Réalisations</h2>
+
+<div class="gallery">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+<img src="photo6.jpg">
+<img src="photo7.jpg">
+<img src="photo8.jpg">
+</div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="hidden">
+<h2>Contact</h2>
+
+<div class="contact">
+<p>📞 01 75 36 19 19</p>
+<p>📩 borgelec@gmail.com</p>
+<p>📍 Val-de-Marne (94)</p>
+</div>
+
+</section>
+
+<footer>
+© 2026 BORG’ELEC
+</footer>
+
+<a class="call" href="tel:0175361919">📞</a>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
